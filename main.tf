@@ -13,6 +13,19 @@ terraform {
       version = "2.94.0"
     }
   }
+
+  backend "s3" {
+    bucket = "felipeminello-remote-state"
+    key    = "aws-vpc/terraform.tfstate"
+    region = "us-east-1"
+  }
+
+  # backend "azurerm" {
+  #   resource_group_name  = "remote-state"
+  #   storage_account_name = "felipeminelloremotestate"
+  #   container_name       = "remote-state"
+  #   key                  = "azure-vnet/terraform.tfstate"
+  # }
 }
 
 provider "aws" {
