@@ -1,3 +1,7 @@
 resource "aws_s3_bucket" "first_bucket" {
-  bucket = "exemplo-curso-terraform-cli-felipeminello"
+  bucket = "felipeminello-remote-state"
+
+  versioning {
+    enabled = true
+  }
 }
