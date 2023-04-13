@@ -5,3 +5,6 @@
 ## Links
 - [Terraform](https://www.terraform.io/)
 - [Providers](https://registry.terraform.io/browse/providers)
+
+## Comandos
+- `terraform init -migrate-state` - When
