@@ -26,8 +26,8 @@ provider "aws" {
   }
 }
 
-data "terraform_remote_state" "vps" {
-  backend = "23"
+data "terraform_remote_state" "vpc" {
+  backend = "s3"
   config = {
     bucket = "felipeminello-remote-state"
     key    = "aws-vpc/terraform.tfstate"
