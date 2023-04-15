@@ -31,7 +31,7 @@ resource "azurerm_network_interface" "network_interface" {
 
 resource "azurerm_network_interface_security_group_association" "nisga" {
   network_interface_id      = azurerm_network_interface.network_interface.id
-  network_security_group_id = data.terraform_remote_state.vnet.outputs.secutiry_group_id
+  network_security_group_id = data.terraform_remote_state.vnet.outputs.security_group_id
 }
 
 resource "azurerm_linux_virtual_machine" "vm" {
@@ -43,8 +43,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
   network_interface_ids = [azurerm_network_interface.network_interface.id]
 
   admin_ssh_key {
-    username   = "azurerm_network_interface"
-    public_key = file("./azure-key.pub")
+    username   = "terraform"
+    public_key = file("~/.ssh/id_rsa.pub")
   }
 
   os_disk {
@@ -54,8 +54,8 @@ resource "azurerm_linux_virtual_machine" "vm" {
 
   source_image_reference {
     publisher = "Canonical"
-    offer     = "UbuntuServer"
-    sku       = "22.04-LTS"
+    offer     = "0001-com-ubuntu-server-jammy"
+    sku       = "22_04-lts-gen2"
     version   = "latest"
   }
 
