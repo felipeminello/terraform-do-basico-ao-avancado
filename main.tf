@@ -10,7 +10,7 @@ terraform {
 
   backend "s3" {
     bucket = "felipeminello-remote-state"
-    key    = "aws-vpc/terraform.tfstate"
+    key    = "aws-vm/terraform.tfstate"
     region = "us-east-1"
   }
 }
