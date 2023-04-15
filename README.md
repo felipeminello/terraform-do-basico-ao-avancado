@@ -6,5 +6,7 @@
 - [Terraform](https://www.terraform.io/)
 - [Providers](https://registry.terraform.io/browse/providers)
 
-## Comandos
-- `terraform init -migrate-state` - When
+## Gerando chaves SSH
+```shell
+ssh-keygen -f azure-key
+```
