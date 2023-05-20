@@ -1,14 +1,14 @@
 resource "aws_vpc" "vpc" {
-  cidr_block = "10.0.0.0/16"
+  cidr_block = var.cidr_vpc
 
   tags = {
-    "Name" = "vpc-terraform"
+    "Name" = "vpc-${var.environment}"
   }
 }
 
 resource "aws_subnet" "subnet" {
   vpc_id     = aws_vpc.vpc.id
-  cidr_block = "10.0.1.0/24"
+  cidr_block = var.cidr_subnet
 
   tags = {
     "Name" = "vpc-subnet"
@@ -19,7 +19,7 @@ resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "internet-gateway-terraform"
+    Name = "internet-gateway-${var.environment}"
   }
 }
 
@@ -32,7 +32,7 @@ resource "aws_route_table" "route_table" {
   }
 
   tags = {
-    Name = "route-table-terraform"
+    Name = "route-table-${var.environment}"
   }
 }
 
@@ -42,7 +42,7 @@ resource "aws_route_table_association" "rta" {
 }
 
 resource "aws_security_group" "security_group" {
-  name   = "security-group-terraform"
+  name   = "security-group-${var.environment}"
   vpc_id = aws_vpc.vpc.id
 
   ingress {
