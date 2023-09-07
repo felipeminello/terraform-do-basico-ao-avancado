@@ -1,7 +1,15 @@
-resource "aws_s3_bucket" "first_bucket" {
-  bucket = "felipeminello-remote-state"
+resource "aws_s3_bucket" "lifecycle" {
+  bucket = "felipeminello-lifecycle"
 
-  versioning {
-    enabled = true
+  lifecycle {
+    # create_before_destroy = true
+    # prevent_destroy = true
+    ignore_changes = [tags, ]
+
+
+  }
+
+  tags = {
+    aula = "lifecycle"
   }
 }
