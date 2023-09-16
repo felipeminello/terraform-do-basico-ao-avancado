@@ -2,7 +2,7 @@ resource "aws_vpc" "vpc" {
   cidr_block = "10.0.0.0/16"
 
   tags = {
-    "Name" = "vpc-terraform"
+    "Name" = "vpc-terraform-db"
   }
 }
 
@@ -11,7 +11,7 @@ resource "aws_subnet" "subnet" {
   cidr_block = "10.0.1.0/24"
 
   tags = {
-    "Name" = "vpc-subnet"
+    Name = "subnet-terraform-vb"
   }
 }
 
@@ -19,7 +19,7 @@ resource "aws_internet_gateway" "internet_gateway" {
   vpc_id = aws_vpc.vpc.id
 
   tags = {
-    Name = "internet-gateway-terraform"
+    Name = "internet-gateway-terraform-db"
   }
 }
 
@@ -32,7 +32,7 @@ resource "aws_route_table" "route_table" {
   }
 
   tags = {
-    Name = "route-table-terraform"
+    Name = "route-table-terraform-db"
   }
 }
 
@@ -42,14 +42,17 @@ resource "aws_route_table_association" "rta" {
 }
 
 resource "aws_security_group" "security_group" {
-  name   = "security-group-terraform"
+  name   = "security-group-terraform-db"
   vpc_id = aws_vpc.vpc.id
 
-  ingress {
-    from_port   = 22
-    to_port     = 22
-    protocol    = "tcp"
-    cidr_blocks = ["0.0.0.0/0"]
+  dynamic "ingress" {
+    for_each = var.portas
+    content {
+      from_port   = ingress.value
+      to_port     = ingress.value
+      protocol    = "tcp"
+      cidr_blocks = ["0.0.0.0/0"]
+    }
   }
 
   egress {
