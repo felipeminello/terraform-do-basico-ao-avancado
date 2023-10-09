@@ -7,4 +7,6 @@
 - [Providers](https://registry.terraform.io/browse/providers)
 
 ## Comandos
-- `terraform init -migrate-state` - When
+- Criar Workspace `terraform workspace new {nome}`
+- Selecionar Workspace `terraform workspace show`
+- Listar Workspaces `terraform workspace list`
