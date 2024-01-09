@@ -1,10 +1,35 @@
-# Curso: Terraform - Do Básico ao Avançado
+# Criação de VM na AWS acessando VPC com Terraform Remote State Data Source
 
-[Link do curso](https://uciandt.udemy.com/course/terraform-do-basico-ao-avancado)
+## Contexto
 
-## Links
-- [Terraform](https://www.terraform.io/)
-- [Providers](https://registry.terraform.io/browse/providers)
+Este repositório foi criado como conteúdo adicional para a aula [**Criação de VM na AWS acessando VPC com Terraform Remote State Data Source**](https://www.udemy.com/course/terraform-do-basico-ao-avancado/learn/lecture/30183612#overview) do curso [**Terraform - Básico ao Avançado**](https://www.udemy.com/course/terraform-do-basico-ao-avancado/?couponCode=TERRAFORM_DEZ23), por Daniel Gil.
 
-## Comandos
-- `terraform init -migrate-state` - When
+## Documentação Usada na Aula
+
+### AWS Terraform Provider
+
+- [AWS Terraform Provider](https://registry.terraform.io/providers/hashicorp/aws/latest/docs)
+- [aws_key_pair](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/key_pair)
+- [aws_instance](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/instance)
+
+## Conheça o Curso
+
+> Quer ter acesso à aula onde este código foi criado?
+>
+> Lá você vai encontar explicações detalhadas e vai ter a possibilidade de tirar todas as suas com o professor.
+>
+> Aqui você encontra um link com um cupom desconto especial para:
+
+**Terraform - Básico ao Avançado**
+
+[![Terraform - Básico ao Avançado](https://felipeminellocursos.blob.core.windows.net/images/terraform-basico-ao-avancado.png)](https://www.udemy.com/course/terraform-do-basico-ao-avancado/?couponCode=TERRAFORM_DEZ23)
+
+## Conheça outros Cursos
+
+> Tem interesse por assuntos relacionados?
+>
+> Aqui você encontra um cupom de desconto especial para:
+
+**Docker - Básico ao Avançado**
+
+[![Docker - Básico ao Avançado](https://felipeminellocursos.blob.core.windows.net/images/docker-basico-ao-avancado.png)](https://www.udemy.com/course/docker-do-basico-ao-avancado/?couponCode=DOCKER_DEZ23)
