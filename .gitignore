@@ -5,3 +5,5 @@ terraform.tfstate.backup
 terraform.tfstate
 .terraform.tfstate.lock.info
 errored.tfstate
+aws-key
+azure-key
