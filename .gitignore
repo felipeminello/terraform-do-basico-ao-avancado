@@ -1,7 +1,6 @@
-.terraform.lock.hcl
-plan.out
-terraform.tfstate.backup
-.terraform/
-terraform.tfstate
-.terraform.tfstate.lock.info
-errored.tfstate
+aws-key*
+azure-key*
+.terraform*
+*.out
+*.tfvars
+*.tfstate*

@@ -2,7 +2,7 @@ resource "aws_vpc" "vpc" {
   cidr_block = "10.0.0.0/16"
 
   tags = {
-    "Name" = "vpc-terraform"
+    Name = "vpc-terraform"
   }
 }
 
@@ -11,7 +11,7 @@ resource "aws_subnet" "subnet" {
   cidr_block = "10.0.1.0/24"
 
   tags = {
-    "Name" = "vpc-subnet"
+    Name = "subnet-terraform"
   }
 }
 
@@ -42,10 +42,12 @@ resource "aws_route_table_association" "rta" {
 }
 
 resource "aws_security_group" "security_group" {
-  name   = "security-group-terraform"
-  vpc_id = aws_vpc.vpc.id
+  name        = "security-group-terraform"
+  description = "Permitir acesso na porta 22"
+  vpc_id      = aws_vpc.vpc.id
 
   ingress {
+    description = "SSH"
     from_port   = 22
     to_port     = 22
     protocol    = "tcp"
@@ -55,7 +57,11 @@ resource "aws_security_group" "security_group" {
   egress {
     from_port   = 0
     to_port     = 0
-    protocol    = "tcp"
+    protocol    = "-1"
     cidr_blocks = ["0.0.0.0/0"]
+  }
+
+  tags = {
+    Name = "security-group-terraform"
   }
 }

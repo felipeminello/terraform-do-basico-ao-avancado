@@ -1,30 +1,24 @@
 terraform {
-
-  required_version = ">= 1.0.0"
+  required_version = ">= 1.5.0"
 
   required_providers {
     aws = {
       source  = "hashicorp/aws"
-      version = "3.73.0"
+      version = "5.16.2"
     }
 
     azurerm = {
       source  = "hashicorp/azurerm"
-      version = "2.94.0"
+      version = "3.72.0"
     }
+
   }
 
-  # backend "s3" {
-  #   bucket = "felipeminello-remote-state"
-  #   key    = "aws-vpc/terraform.tfstate"
-  #   region = "us-east-1"
-  # }
-
   backend "azurerm" {
-    resource_group_name  = "remote-state"
-    storage_account_name = "felipeminelloremotestate"
+    resource_group_name  = "rg-terraform-state"
+    storage_account_name = "felipeminellorstate"
     container_name       = "remote-state"
-    key                  = "azure-vnet/terraform.tfstate"
+    key                  = "pipeline-gitlab/terraform.tfstate"
   }
 }
 
@@ -41,4 +35,23 @@ provider "aws" {
 
 provider "azurerm" {
   features {}
+}
+
+data "terraform_remote_state" "vpc" {
+  backend = "s3"
+  config = {
+    bucket = "felipeminello-remote-state"
+    key    = "aws-vpc/terraform.tfstate"
+    region = "us-east-1"
+  }
+}
+
+data "terraform_remote_state" "vnet" {
+  backend = "azurerm"
+  config = {
+    resource_group_name  = "rg-terraform-state"
+    storage_account_name = "felipeminellorstate"
+    container_name       = "remote-state"
+    key                  = "azure-vnet/terraform.tfstate"
+  }
 }
